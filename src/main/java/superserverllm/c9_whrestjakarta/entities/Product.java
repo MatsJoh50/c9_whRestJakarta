@@ -1,7 +1,6 @@
-package entities;
+package superserverllm.c9_whrestjakarta.entities;
 
-
-import service.UID;
+import superserverllm.c9_whrestjakarta.service.UID;
 
 import java.time.LocalDateTime;
 

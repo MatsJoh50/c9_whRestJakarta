@@ -1,14 +1,17 @@
-package service;
+package superserverllm.c9_whrestjakarta.service;
 
-import entities.Category;
-import entities.Product;
+
+
+import superserverllm.c9_whrestjakarta.entities.*;
+import superserverllm.c9_whrestjakarta.service.*;
 
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.concurrent.*;
 
 public class Warehouse {
-  private List<Product> warehouseProducts = new ArrayList<>();
+  private List<Product> warehouseProducts = new CopyOnWriteArrayList<>();
 
   public void populateWarehouseProducts() {
     PopulateWH populateWH = new PopulateWH();

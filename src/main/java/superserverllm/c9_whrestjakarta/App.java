@@ -1,7 +1,7 @@
-import entities.Category;
-import entities.Product;
-import service.UID;
-import service.Warehouse;
+package superserverllm.c9_whrestjakarta;
+
+import superserverllm.c9_whrestjakarta.entities.*;
+import superserverllm.c9_whrestjakarta.service.*;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package service;
+package superserverllm.c9_whrestjakarta.service;
 import entities.Category;
 import entities.Product;
 import service.Warehouse;

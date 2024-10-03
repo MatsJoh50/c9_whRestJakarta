@@ -1,4 +1,4 @@
-package entities;
+package superserverllm.c9_whrestjakarta.entities;
 
 public enum Category {
   PANTS,
