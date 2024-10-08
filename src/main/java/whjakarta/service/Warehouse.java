@@ -1,9 +1,8 @@
-package superserverllm.c9_whrestjakarta.service;
+package whjakarta.service;
 
 
 
-import superserverllm.c9_whrestjakarta.entities.*;
-import superserverllm.c9_whrestjakarta.service.*;
+import whjakarta.entities.*;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -18,13 +17,22 @@ public class Warehouse {
     populateWH.populate(warehouseProducts);
   }
 
+  public List<Product> getWarehouesList() {
+    return warehouseProducts;
+  }
+
+  public boolean isPopulated() {
+    return !warehouseProducts.isEmpty();
+  }
+
   public void addProduct(Product product) {
-    if(warehouseProducts.contains(product)) {
+    System.out.println("addproduct function: " + warehouseProducts.size());
+    if(warehouseProducts.contains(product.getName())) {
       System.out.println("Varan finns redan");
     } else{
       warehouseProducts.add(product);
       System.out.println("Produkten tillagd");
-      callbackOnAddedProduct(product);
+//      callbackOnAddedProduct(product);
 
     }
   }
@@ -67,6 +75,7 @@ public String callbackOnAddedProduct(Product product) {
     try {
       for (Product product : warehouseProducts) {
         if (product.getId().equals(uid)) {
+//          product.toString();
           return product;
         }
       }
@@ -74,13 +83,59 @@ public String callbackOnAddedProduct(Product product) {
       throw new RuntimeException(e);
     }
     return null;
-  };
+  }
 
-  public void printAll() {
+  public void searchToString(String uid) {
+    try {
+      for (Product product : warehouseProducts) {
+        if (product.getId().equals(uid)) {
+          product.toString();
+        }
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public Product searchProductByID(String id) {
+    for (Product product : warehouseProducts) {
+      if (product.getId().equals(id)) {
+        return product;
+      }
+    }
+    // Returning null if no product is found
+    return null;
+  }
+
+
+    public void printAll() {
     for (Product product : warehouseProducts) {
       System.out.println(product.toString());
     }
   }
+
+//  public List<String> printAllJSON() {
+//    return warehouseProducts.stream()
+//            .map(product -> {
+//              StringBuilder sb = new StringBuilder();
+//              sb.append(product.getId())
+//                      .append(" ")
+//                      .append(product.getName())
+//                      .append(" ")
+//                      .append(product.getRating())
+//                      .append(" ")
+//                      .append(product.getCategory());
+//              return sb.toString();  // Return the concatenated string
+//            })
+//            .collect(Collectors.toList());
+//  }
+
+  public List<String> printAllJSON() {
+    return warehouseProducts.stream()
+            .map(Product::toString)  // Use the existing toString() method
+            .collect(Collectors.toList());
+  }
+
 
   public void printCategory(Category inputCategory) {
     List<Product> sortedList = getProductsByCategoryAndSortByName(inputCategory);

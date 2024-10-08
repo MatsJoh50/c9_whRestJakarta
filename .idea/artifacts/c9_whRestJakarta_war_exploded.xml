@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="c9_whRestJakarta:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/c9_whRestJakarta_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="c9_whRestJakarta" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.4" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="c9_whRestJakarta/web/Web" />
+    </root>
+  </artifact>
+</component>

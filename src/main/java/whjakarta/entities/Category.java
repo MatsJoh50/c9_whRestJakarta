@@ -1,4 +1,4 @@
-package superserverllm.c9_whrestjakarta.entities;
+package whjakarta.entities;
 
 public enum Category {
   PANTS,
@@ -8,5 +8,6 @@ public enum Category {
   BACKPACKS,
   COOKING,
   CARVING,
-  MEDICAL
+  MEDICAL,
+  UNKNOWN
 }

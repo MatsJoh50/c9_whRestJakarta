@@ -1,13 +1,14 @@
-package superserverllm.c9_whrestjakarta.service;
-import entities.Category;
-import entities.Product;
-import service.Warehouse;
-import service.*;
+package whjakarta.service;
+
+import whjakarta.entities.Product;
+import whjakarta.entities.Category;
+
+
 
 import java.util.List;
 
 public class PopulateWH {
-  public void populate(List warehouseProducts) {
+  public void populate(List<Product> warehouseProducts) {
 
     // PANTS (minst 5 produkter)
     warehouseProducts.add(new Product("Blue Jeans", Category.PANTS, 8));

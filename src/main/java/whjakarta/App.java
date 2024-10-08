@@ -1,12 +1,12 @@
-package superserverllm.c9_whrestjakarta;
+package whjakarta;
 
-import superserverllm.c9_whrestjakarta.entities.*;
-import superserverllm.c9_whrestjakarta.service.*;
+import whjakarta.entities.Category;
+import whjakarta.entities.Product;
+import whjakarta.service.UID;
+import whjakarta.service.Warehouse;
 
 import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDate;
 import java.util.Scanner;
 
 public  class App {
@@ -26,7 +26,7 @@ public  class App {
                 case 1 -> warehouse.addProduct(createProduct(warehouse));
                 case 2 -> modifyProduct();
                 case 3 -> warehouse.printAll();
-                case 4 -> warehouse.search(findProduct());
+                case 4 -> warehouse.searchToString(findProduct());
                 case 5 -> warehouse.printCategory(askForCategory());
                 case 6 -> warehouse.printProductsByDate(askForDate());
                 case 7 -> warehouse.isModified();

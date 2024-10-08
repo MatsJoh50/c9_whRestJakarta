@@ -1,4 +1,4 @@
-package superserverllm.c9_whrestjakarta.service;
+package whjakarta.service;
 
 import java.util.Random;
 
