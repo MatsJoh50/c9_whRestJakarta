@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class whonline {
     private final WarehouseInstance warehouse = WarehouseInstance.getInstance();
 
-//lägg till produkt med validering av värdern
+    //lägg till produkt med validering av värdern
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -30,9 +30,18 @@ public class whonline {
                 return Response.status(Response.Status.BAD_REQUEST).entity("Product name cannot be empty").build();
             }
 
+
+            //Forced controll due to input in String.
+            Category parsedInputCategory;
+            try {
+                parsedInputCategory = Category.valueOf(inputProduct.category().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                return Response.status(Response.Status.BAD_REQUEST).entity("Invalid category").build();
+            }
+
             Product newProductInput = new Product(
                     inputProduct.name(),
-                    Category.valueOf(inputProduct.category().toUpperCase()),
+                    parsedInputCategory,
                     inputProduct.rating()
             );
 
@@ -74,25 +83,25 @@ public class whonline {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/id/{id}")
     public Response getProductByIdFromWarehouseList(@PathParam("id") String id) {
-     Product returnThisProduct = warehouse.searchProductByID(id);
-     if (returnThisProduct != null) {
-         return Response.ok(returnThisProduct.toString()).build();
-     }
-         return Response.status(Response.Status.NOT_FOUND).build();
+        Product returnThisProduct = warehouse.searchProductByID(id);
+        if (returnThisProduct != null) {
+            return Response.ok(returnThisProduct.toString()).build();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 
 
-//hämta alla produkter från en kattegori
-@GET
-@Produces(MediaType.APPLICATION_JSON)
-@Path("/category/{category}")
-public Response getListOfProductsFromGivenCategory(@PathParam("category") Category category){
+    //hämta alla produkter från en kattegori
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/category/{category}")
+    public Response getListOfProductsFromGivenCategory(@PathParam("category") Category category) {
         warehouse.populateWarehouseProducts();
-    List<Product> listOfCategory = warehouse.getProductsByCategoryAndSortByName(category);
-    if(listOfCategory.isEmpty()){
-        return Response.status(Response.Status.NOT_FOUND).entity("No products of: " + category + " was found").build();
-    }
+        List<Product> listOfCategory = warehouse.getProductsByCategoryAndSortByName(category);
+        if (listOfCategory.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).entity("No products of: " + category + " was found").build();
+        }
 
-    return Response.ok().entity(listOfCategory.stream().map(Product::toString).collect(Collectors.toList())).build();
-}
+        return Response.ok().entity(listOfCategory.stream().map(Product::toString).collect(Collectors.toList())).build();
+    }
 }
