@@ -1,0 +1,53 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Testar Jakarta appen</title>
+        <style>
+            /* Body styles for mellow tones */
+            body {
+                background-color: #f0f4f8; /* Soft light blue background */
+                color: #333; /* Muted dark gray text */
+                font-family: 'Arial', sans-serif; /* Simple, clean font */
+                padding: 20px; /* Spacing around the content */
+                margin: 0;
+            }
+
+            /* Center content in the middle of the screen */
+            html, body {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Container for the content with a soft shadow and border */
+            .content-container {
+                background-color: #fff; /* White background for content */
+                border-radius: 10px; /* Rounded corners */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+                padding: 30px;
+                text-align: center; /* Center the text */
+                max-width: 400px; /* Keep the container narrow */
+                width: 100%;
+            }
+
+            /* Heading and body text styling */
+            h1 {
+                font-size: 1.5rem;
+                color: #557a95; /* Mellow blue for headings */
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="content-container">
+        <h1>Server is running!</h1>
+    </div>
+    </body>
+    </html>
+</jsp:root>
