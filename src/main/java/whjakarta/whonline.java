@@ -78,11 +78,12 @@ public class whonline {
     @Path("/populate")
     public Response populateWarehouseListForTestingFunctionality() {
         warehouse.populateWarehouseProducts();
-        if (warehouse.isPopulated()) {
+        if (!warehouse.isPopulated()) {
+            logger.info("Warehouse populated: {}", LocalDateTime.now());
             int productCount = warehouse.printAllJSON().size();  // Assuming a method to get the product list
             return Response.ok().entity("Warehouse populated with " + productCount + " products. Task completed: " + LocalDateTime.now()).build();
         }
-        logger.info("Warehouse populated: {}", LocalDateTime.now());
+        logger.info("New try to populate a populated warehouse: {}", LocalDateTime.now());
         return Response.status(Response.Status.NOT_FOUND).entity("Warehouse not populated").build();
     }
 
@@ -93,6 +94,7 @@ public class whonline {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/id/{id}")
     public Response getProductByIdFromWarehouseList(@PathParam("id") String id) {
+        logger.info("Calling /id/{id} using: {}", id);
         Product returnThisProduct = warehouse.searchProductByID(id);
         if (returnThisProduct != null) {
             logger.info("Found product: {}", returnThisProduct);
