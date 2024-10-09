@@ -25,15 +25,13 @@ public class Warehouse {
     }
 
     public void addProduct(Product product) {
-        System.out.println("addproduct function: " + warehouseProducts.size());
-        if (warehouseProducts.contains(product.getName())) {
-            System.out.println("Varan finns redan");
-        } else {
+//        if (warehouseProducts.stream()
+//                .map(Product::getName)
+//                .anyMatch(name -> name.equals(product.getName()))) {
+//            return;
+//        } else {
+//        }
             warehouseProducts.add(product);
-            System.out.println("Produkten tillagd");
-//      callbackOnAddedProduct(product);
-
-        }
     }
 
     public String callbackOnAddedProduct(Product product) {
